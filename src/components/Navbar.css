@@ -124,3 +124,11 @@
     transform: translateY(0);
   }
 }
+
+.nav-link.active {
+  color: #fff;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}

@@ -149,6 +149,10 @@
   overflow: hidden;
 }
 
+.skills-grid[data-reveal]:not(.revealed) .skill-progress {
+  animation: none;
+}
+
 .skill-progress {
   height: 100%;
   background: linear-gradient(90deg, #6366f1, #8b5cf6);

@@ -62,7 +62,7 @@ const Skills = () => {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header" data-reveal>
           <span className="section-tag">Skills & Expertise</span>
           <h2 className="section-title">Technologies I Work With</h2>
           <p className="section-description">
@@ -71,7 +71,7 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="tech-marquee">
+        <div className="tech-marquee" data-reveal>
           <div className="marquee-content">
             {[...technologies, ...technologies].map((tech, index) => (
               <div key={index} className="tech-badge">
@@ -82,7 +82,7 @@ const Skills = () => {
           </div>
         </div>
 
-        <div className="skills-grid">
+        <div className="skills-grid" data-reveal>
           {skillCategories.map((category, index) => (
             <div key={index} className="skill-card">
               <div className="skill-card-header">
@@ -109,7 +109,7 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="skills-cta">
+        <div className="skills-cta" data-reveal>
           <h3>Interested in working together?</h3>
           <p>I'm always open to discussing new projects and opportunities.</p>
           <a href="#contact" className="btn btn-primary">

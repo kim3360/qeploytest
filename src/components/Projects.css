@@ -184,3 +184,61 @@
     padding: 1.25rem;
   }
 }
+
+/* Featured badge */
+.featured-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Always-visible links on touch devices (hover overlays don't work there) */
+.project-links {
+  display: none;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.project-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+.project-link:hover {
+  color: #fff;
+}
+
+@media (hover: none) {
+  .project-overlay {
+    display: none;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}

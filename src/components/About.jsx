@@ -11,13 +11,13 @@ const About = () => {
   return (
     <section id="about" className="about">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header" data-reveal>
           <span className="section-tag">About Me</span>
           <h2 className="section-title">Passionate Developer & Problem Solver</h2>
         </div>
 
         <div className="about-content">
-          <div className="about-image">
+          <div className="about-image" data-reveal>
             <div className="image-wrapper">
               <div className="about-placeholder">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -31,7 +31,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="about-text">
+          <div className="about-text" data-reveal style={{ transitionDelay: '0.12s' }}>
             <h3>Building Digital Experiences That Matter</h3>
             <p>
               I'm a full-stack developer with a passion for creating elegant solutions 
@@ -74,7 +74,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="stats-grid">
+        <div className="stats-grid" data-reveal>
           {stats.map((stat, index) => (
             <div key={index} className="stat-card">
               <span className="stat-number">{stat.number}</span>

@@ -3,21 +3,20 @@ import './Navbar.css';
 import { profile } from '../data/profile';
 
 const navLinks = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'home', label: '홈' },
+  { id: 'about', label: '소개' },
+  { id: 'skills', label: '기술 스택' },
+  { id: 'projects', label: '프로젝트' },
+  { id: 'contact', label: '연락처' },
 ];
 
-/** Two-letter monogram derived from the name (e.g. "Your Name" → "YN"). */
+/** 이름에서 머리글자를 뽑아 로고 모노그램으로 사용합니다 (예: 홍길동 → 홍). */
 const initials = profile.name
   .split(/\s+/)
   .map((word) => word[0])
   .filter(Boolean)
   .slice(0, 2)
-  .join('')
-  .toUpperCase();
+  .join('');
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +27,7 @@ const Navbar = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 12);
 
-      // Highlight the link of the section currently in view
+      // 현재 화면에 보이는 섹션의 메뉴를 강조합니다
       const probe = window.scrollY + 150;
       let current = 'home';
       navLinks.forEach(({ id }) => {
@@ -43,7 +42,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close the menu on Escape, or when resizing up to desktop width
+  // Esc 키를 누르거나, 화면을 넓혀 데스크톱 크기가 되면 메뉴를 닫습니다
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && setMenuOpen(false);
     const onResize = () => window.innerWidth > 768 && setMenuOpen(false);
@@ -68,7 +67,7 @@ const Navbar = () => {
         <nav
           id="primary-navigation"
           className={`nav__links ${menuOpen ? 'nav__links--open' : ''}`}
-          aria-label="Primary"
+          aria-label="메인 내비게이션"
         >
           {navLinks.map(({ id, label }) => (
             <a
@@ -86,7 +85,7 @@ const Navbar = () => {
             className="nav__cta"
             onClick={() => setMenuOpen(false)}
           >
-            Hire me
+            채용 문의
           </a>
         </nav>
 
@@ -95,7 +94,7 @@ const Navbar = () => {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
         >
           <span />
           <span />

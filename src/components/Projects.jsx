@@ -17,13 +17,13 @@ const Projects = () => (
   <section id="projects" className="section" aria-labelledby="projects-title">
     <div className="container">
       <div className="section-head" data-reveal>
-        <span className="eyebrow">Projects</span>
+        <span className="eyebrow">프로젝트</span>
         <h2 className="section-title" id="projects-title">
-          Selected work
+          주요 프로젝트
         </h2>
         <p className="section-desc">
-          A few sample projects to show the card layout — replace them with
-          your own in <code>src/data/profile.js</code>.
+          그동안 작업한 대표 프로젝트를 소개합니다. 카드의 링크에서
+          자세한 내용을 확인하실 수 있어요.
         </p>
       </div>
 
@@ -35,13 +35,12 @@ const Projects = () => (
             data-reveal
             style={{ transitionDelay: `${(index % 2) * 0.1}s` }}
           >
-            {/* Automatic placeholder artwork — swap for a real screenshot
-                by adding an <img> here. */}
+            {/* 자동 생성된 대체 이미지 — 실제 스크린샷은 <img>로 교체하세요. */}
             <div className="project-card__media" aria-hidden="true">
               <span className="project-card__media-number">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span className="project-card__media-note">screenshot placeholder</span>
+              <span className="project-card__media-note">스크린샷 자리</span>
             </div>
 
             <div className="project-card__body">
@@ -62,20 +61,20 @@ const Projects = () => (
                   className="project-card__link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="Placeholder link — set liveUrl in src/data/profile.js"
+                  title="예시 링크입니다 — 실제 서비스 주소로 바꿔주세요"
                 >
                   <ArrowIcon />
-                  Live demo
+                  라이브 데모
                 </a>
                 <a
                   href={project.sourceUrl}
                   className="project-card__link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="Placeholder link — set sourceUrl in src/data/profile.js"
+                  title="예시 링크입니다 — 실제 저장소 주소로 바꿔주세요"
                 >
                   <CodeIcon />
-                  Source code
+                  소스 코드
                 </a>
               </div>
             </div>

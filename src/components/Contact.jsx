@@ -23,11 +23,13 @@ const MailIcon = () => (
 const socials = [
   {
     name: 'GitHub',
+    label: '깃허브',
     href: profile.socials.github,
     icon: <GitHubIcon />,
   },
   {
     name: 'LinkedIn',
+    label: '링크드인',
     href: profile.socials.linkedin,
     icon: <LinkedInIcon />,
   },
@@ -41,13 +43,13 @@ const Contact = () => (
   >
     <div className="container contact">
       <div className="section-head" data-reveal>
-        <span className="eyebrow">Contact</span>
+        <span className="eyebrow">연락처</span>
         <h2 className="section-title" id="contact-title">
-          Let&rsquo;s get in touch
+          언제든 편하게 연락 주세요
         </h2>
         <p className="section-desc">
-          Have a project in mind, a question, or just want to say hi? Email is
-          the fastest way to reach me — or connect with me on social media.
+          프로젝트 제안이나 궁금한 점이 있다면 이메일로 가장 빠르게
+          답장드립니다. 소셜 채널로의 메시지도 언제든 환영합니다.
         </p>
       </div>
 
@@ -55,13 +57,13 @@ const Contact = () => (
         <a
           href={`mailto:${profile.email}`}
           className="contact__email"
-          title="Placeholder — set your email in src/data/profile.js"
+          title="예시 이메일입니다 — 실제 이메일로 바꿔주세요"
         >
           <span className="contact__email-icon">
             <MailIcon />
           </span>
           <span className="contact__email-text">
-            <span className="contact__email-label">Email me at</span>
+            <span className="contact__email-label">이메일 주소</span>
             <span className="contact__email-value ph">{profile.email}</span>
           </span>
         </a>
@@ -74,8 +76,8 @@ const Contact = () => (
               className="contact__social"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${social.name} (placeholder link — set in src/data/profile.js)`}
-              title={`Placeholder — set your ${social.name} URL in src/data/profile.js`}
+              aria-label={`${social.label} 프로필로 이동`}
+              title={`예시 링크입니다 — 실제 ${social.label} 주소로 바꿔주세요`}
             >
               {social.icon}
             </a>
@@ -83,8 +85,7 @@ const Contact = () => (
         </div>
 
         <p className="contact__note">
-          All contact details above are placeholders — edit{' '}
-          <code>src/data/profile.js</code> to add your own.
+          위 연락처 정보는 모두 예시입니다. 실제 정보로 바꿔서 사용해 주세요.
         </p>
       </div>
     </div>

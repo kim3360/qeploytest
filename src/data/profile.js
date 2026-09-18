@@ -1,101 +1,104 @@
 /**
- * ✏️✏️✏️  EDIT THIS ONE FILE TO MAKE THE PORTFOLIO YOURS  ✏️✏️✏️
+ * ✏️✏️✏️  이 파일 한 곳만 수정하면 포트폴리오가 본인의 것으로 바뀝니다  ✏️✏️✏️
  *
- * Every piece of personal content on the site is collected here, and every
- * value below is a PLACEHOLDER (marked with "Your …" or "sample …").
- * Replace them with your own information — no other file needs to change.
+ * 사이트에 표시되는 모든 개인 정보는 이 파일에 모여 있습니다. 아래 값들은
+ * 모두 예시(PLACEHOLDER)이므로 본인의 내용으로 바꿔 주세요. 다른 파일은
+ * 건드릴 필요가 없습니다.
  *
- * Tip: the page visibly marks personal placeholders with a dashed underline.
- * That styling lives in `src/index.css` (look for `.ph`) and disappears
- * automatically once you remove the `placeholder: true` flags — or just edit
- * the text and leave the flags; it's up to you.
+ * 참고: 예시로 남겨둔 내용은 점선 밑줄로 표시됩니다. 이 스타일은
+ * `src/index.css`의 `.ph`에서 정의되어 있으며, 실제 내용으로 바꾸면
+ * 자연스럽게 어울리도록 플래그(`placeholder: true`)를 제거하면 사라집니다.
  */
 
 export const profile = {
-  // ── 👤 Identity ───────────────────────────────────────────────────────
-  name: 'Your Name', // ← replace with your full name
-  role: 'Your Role — e.g. Frontend Developer', // ← your job title / discipline
+  // ── 👤 소개 ───────────────────────────────────────────────────────────
+  name: '홍길동', // ← 본인의 이름으로 바꿔주세요
+  role: '프론트엔드 개발자', // ← 직무 / 전문 분야
   tagline:
-    'Replace this with a one- or two-sentence intro: who you are, what you build, and what makes you excited about it.',
-  location: 'Your City, Country', // ← where people can find you
-  availability: 'Open to new opportunities', // ← your current status
+    '사용자가 다시 찾는 인터페이스를 만드는 프론트엔드 개발자입니다. 작은 디테일까지 놓치지 않는 인터페이스와 쾌적한 사용자 경험을 고민하는 일을 좋아합니다.',
+  location: '서울, 대한민국', // ← 활동 지역
+  availability: '새로운 프로젝트 제안을 기다리고 있습니다', // ← 현재 상태
 
-  // ── 📧 Contact (all placeholders — swap in the real ones) ─────────────
-  email: 'your.email@example.com', // ← your real email address
+  // ── 📧 연락처 (모두 예시 — 실제 정보로 바꿔주세요) ─────────────────────
+  email: 'honggildong@example.com', // ← 실제 이메일 주소
   socials: {
-    github: 'https://github.com/your-username', // ← your GitHub profile
-    linkedin: 'https://www.linkedin.com/in/your-username', // ← your LinkedIn profile
+    github: 'https://github.com/honggildong', // ← 깃허브 프로필 주소
+    linkedin: 'https://www.linkedin.com/in/honggildong', // ← 링크드인 프로필 주소
   },
 
-  // ── 📖 About (short bio — 2 short paragraphs works well) ──────────────
+  // ── 📖 자기소개 (2문단 정도가 적당합니다) ─────────────────────────────
   bio: [
-    'Write your first bio paragraph here: a short introduction covering who you are, your background, and the kind of work you enjoy doing.',
-    'Write a second paragraph here: what you are currently focused on, what you are learning, or what kind of projects or teams you would love to work with.',
+    '안녕하세요, 사용자 경험을 고민하는 프론트엔드 개발자 홍길동입니다. 웹 프론트엔드를 중심으로 인터페이스를 설계하고, 데이터가 화면 위에서 자연스럽게 흐르는 서비스를 만드는 일에 즐거움을 느낍니다.',
+    '요즘은 접근성과 성능에 더 신경 쓰면서, 누구나 편하게 사용할 수 있는 웹을 고민하고 있습니다. 좋은 코드는 좋은 협업에서 나온다고 믿고, 팀과 함께 성장하는 개발자가 되기 위해 노력하고 있습니다.',
   ],
 
-  // ── 🗂 Quick facts shown in the About section (all placeholders) ──────
+  // ── 🗂 소개 섹션에 표시되는 간단한 정보 (모두 예시) ─────────────────────
   facts: [
-    { label: 'Location', value: 'Your City, Country' },
-    { label: 'Focus', value: 'e.g. Web apps with React' },
-    { label: 'Currently learning', value: 'e.g. TypeScript' },
+    { label: '지역', value: '서울, 대한민국' },
+    { label: '관심 분야', value: 'React 기반 웹 애플리케이션' },
+    { label: '학습 중', value: 'TypeScript 심화' },
   ],
 };
 
 /**
- * 🛠 Skills — grouped chips/tags. Rename groups and swap the skill names
- * for your own. Add or remove whole groups freely; the layout adapts.
+ * 🛠 기술 스택 — 분야별 태그 묶음입니다. 그룹 이름과 기술 목록을
+ * 본인에 맞게 자유롭게 늘리거나 줄여도 레이아웃은 그대로 유지됩니다.
  */
 export const skillGroups = [
   {
-    title: 'Frontend',
-    skills: ['HTML & CSS', 'JavaScript', 'React', 'TypeScript', 'Responsive design'],
+    title: '프론트엔드',
+    skills: ['HTML · CSS', 'JavaScript', 'React', 'TypeScript', '반응형 웹'],
   },
   {
-    title: 'Backend',
-    skills: ['Node.js', 'REST APIs', 'PostgreSQL', 'Authentication'],
+    title: '백엔드',
+    skills: ['Node.js', 'REST API', 'PostgreSQL', '인증 · 보안'],
   },
   {
-    title: 'Tools',
-    skills: ['Git & GitHub', 'Vite', 'Figma', 'VS Code', 'Docker'],
+    title: '도구',
+    skills: ['Git · GitHub', 'Vite', 'Figma', 'VS Code', 'Docker'],
   },
 ];
 
 /**
- * 🧩 Projects — 4 sample cards. Replace each one with a real project:
- *   • title          → project name
- *   • description    → one line: what it does / why it matters
- *   • tags           → the tech it uses (3–4 items looks best)
- *   • liveUrl        → link to the deployed app ('#' until you have one)
- *   • sourceUrl      → link to the repository ('#' until you have one)
- * The gradient artwork is an automatic placeholder image — see
- * `src/components/Projects.jsx` to swap in real screenshots instead.
+ * 🧩 프로젝트 — 예시 카드 4개입니다. 실제 프로젝트로 바꿔주세요:
+ *   • title       → 프로젝트 이름
+ *   • description → 한 줄 소개: 무엇을 하는 프로젝트인지
+ *   • tags        → 사용한 기술 (3~4개가 보기 좋습니다)
+ *   • liveUrl     → 배포된 서비스 주소 (없으면 '#')
+ *   • sourceUrl   → 저장소 주소 (없으면 '#')
+ * 카드 위쪽 그라데이션은 자동 생성된 대체 이미지입니다. 실제 스크린샷으로
+ * 바꾸려면 `src/components/Projects.jsx`를 참고하세요.
  */
 export const projects = [
   {
-    title: 'Sample Project 01',
-    description: 'One line describing what this project does and who it helps.',
+    title: '협업 작업 관리 서비스',
+    description:
+      '팀원들과 할 일을 함께 정리하고 진행 상황을 한눈에 볼 수 있는 협업용 작업 관리 웹앱입니다.',
     tags: ['React', 'Vite', 'CSS'],
-    liveUrl: '#', // ← replace with your live demo link
-    sourceUrl: '#', // ← replace with your repo link
+    liveUrl: '#', // ← 실제 데모 주소로 바꿔주세요
+    sourceUrl: '#', // ← 실제 저장소 주소로 바꿔주세요
   },
   {
-    title: 'Sample Project 02',
-    description: 'Another one-line description of a different project.',
+    title: '날씨 대시보드',
+    description:
+      '실시간 날씨와 미세먼지 정보를 카드로 정리해 보여주는 개인화 대시보드입니다.',
     tags: ['TypeScript', 'Node.js'],
     liveUrl: '#',
     sourceUrl: '#',
   },
   {
-    title: 'Sample Project 03',
-    description: 'One line describing what this project does and who it helps.',
-    tags: ['React', 'API'],
+    title: '레시피 공유 커뮤니티',
+    description:
+      '집밥 레시피를 직접 올리고 다른 사람들에게 추천받을 수 있는 소셜 레시피 서비스입니다.',
+    tags: ['React', 'REST API'],
     liveUrl: '#',
     sourceUrl: '#',
   },
   {
-    title: 'Sample Project 04',
-    description: 'Another one-line description of a different project.',
-    tags: ['JavaScript', 'HTML', 'CSS'],
+    title: '개발 기록 블로그',
+    description:
+      '마크다운으로 글을 작성하고 배운 것을 차곡차곡 정리하는 개인 블로그입니다.',
+    tags: ['JavaScript', 'HTML · CSS'],
     liveUrl: '#',
     sourceUrl: '#',
   },

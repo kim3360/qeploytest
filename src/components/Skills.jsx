@@ -5,13 +5,12 @@ const Skills = () => (
   <section id="skills" className="section section--soft" aria-labelledby="skills-title">
     <div className="container">
       <div className="section-head" data-reveal>
-        <span className="eyebrow">Skills</span>
+        <span className="eyebrow">기술 스택</span>
         <h2 className="section-title" id="skills-title">
-          What I work with
+          제가 다루는 기술들
         </h2>
         <p className="section-desc">
-          Tools and technologies I reach for day to day, grouped by where they
-          fit. Edit the list in <code>src/data/profile.js</code>.
+          평소 업무에서 자주 사용하는 도구와 기술을 분야별로 정리했습니다.
         </p>
       </div>
 

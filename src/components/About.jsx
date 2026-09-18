@@ -5,9 +5,9 @@ const About = () => (
   <section id="about" className="section" aria-labelledby="about-title">
     <div className="container">
       <div className="section-head" data-reveal>
-        <span className="eyebrow">About</span>
+        <span className="eyebrow">소개</span>
         <h2 className="section-title" id="about-title">
-          A little about me
+          저는 이런 개발자입니다
         </h2>
       </div>
 
@@ -28,7 +28,7 @@ const About = () => (
             <span className="about__fact-label">{fact.label}</span>
             <span
               className="about__fact-value ph"
-              title="Placeholder — set your quick facts in src/data/profile.js"
+              title="예시 정보입니다 — 실제 정보로 바꿔주세요"
             >
               {fact.value}
             </span>

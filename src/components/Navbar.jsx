@@ -1,56 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Navbar.css';
+import { profile } from '../data/profile';
 
 const navLinks = [
-  { href: '#home', id: 'home', label: 'Home' },
-  { href: '#about', id: 'about', label: 'About' },
-  { href: '#skills', id: 'skills', label: 'Skills' },
-  { href: '#projects', id: 'projects', label: 'Projects' },
-  { href: '#contact', id: 'contact', label: 'Contact' },
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
 ];
 
+/** Two-letter monogram derived from the name (e.g. "Your Name" → "YN"). */
+const initials = profile.name
+  .split(/\s+/)
+  .map((word) => word[0])
+  .filter(Boolean)
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
 
-      // Highlight the nav link of the section currently in view
-      const scrollPos = window.scrollY + 140;
+      // Highlight the link of the section currently in view
+      const probe = window.scrollY + 150;
       let current = 'home';
       navLinks.forEach(({ id }) => {
-        const section = document.getElementById(id);
-        if (section && section.offsetTop <= scrollPos) {
-          current = id;
-        }
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= probe) current = id;
       });
-      setActiveSection(current);
+      setActive(current);
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open
+  // Close the menu on Escape, or when resizing up to desktop width
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
-  // Close the mobile menu with Escape or when resizing up to desktop
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false);
-    };
-    const onResize = () => {
-      if (window.innerWidth > 768) setIsMobileMenuOpen(false);
-    };
+    const onKey = (e) => e.key === 'Escape' && setMenuOpen(false);
+    const onResize = () => window.innerWidth > 768 && setMenuOpen(false);
     window.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
     return () => {
@@ -60,41 +56,53 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`} aria-label="Main navigation">
-      <div className="nav-container">
-        <a href="#home" className="nav-logo">
-          <span className="logo-bracket">&lt;</span>
-          Portfolio
-          <span className="logo-bracket">/&gt;</span>
+    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <div className="container nav__inner">
+        <a href="#home" className="nav__logo" onClick={() => setMenuOpen(false)}>
+          <span className="nav__monogram" aria-hidden="true">
+            {initials}
+          </span>
+          <span className="nav__logo-name">{profile.name}</span>
         </a>
 
-        <div id="nav-menu" className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-          {navLinks.map((link) => (
+        <nav
+          id="primary-navigation"
+          className={`nav__links ${menuOpen ? 'nav__links--open' : ''}`}
+          aria-label="Primary"
+        >
+          {navLinks.map(({ id, label }) => (
             <a
-              key={link.href}
-              href={link.href}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              aria-current={activeSection === link.id ? 'true' : undefined}
-              onClick={() => setIsMobileMenuOpen(false)}
+              key={id}
+              href={`#${id}`}
+              className={`nav__link ${active === id ? 'nav__link--active' : ''}`}
+              aria-current={active === id ? 'true' : undefined}
+              onClick={() => setMenuOpen(false)}
             >
-              {link.label}
+              {label}
             </a>
           ))}
-        </div>
+          <a
+            href="#contact"
+            className="nav__cta"
+            onClick={() => setMenuOpen(false)}
+          >
+            Hire me
+          </a>
+        </nav>
 
         <button
-          className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="nav-menu"
+          className={`nav__burger ${menuOpen ? 'nav__burger--open' : ''}`}
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
       </div>
-    </nav>
+    </header>
   );
 };
 

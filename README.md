@@ -1,16 +1,46 @@
-# React + Vite
+# One-Page Portfolio — React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A clean, modern, fully responsive single-page portfolio template.
+All personal content is **placeholder** content collected in one file so you
+can make it yours in minutes.
 
-Currently, two official plugins are available:
+## Sections
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Section   | What's there                                                             |
+| --------- | ------------------------------------------------------------------------ |
+| Hero      | Name, role/tagline, short intro, "View Projects" + "Contact" buttons, photo placeholder |
+| About     | Short bio + quick facts                                                  |
+| Skills    | Skills grouped into chips (Frontend / Backend / Tools)                   |
+| Projects  | 4 sample cards with one-line descriptions, tech tags and placeholder links |
+| Contact   | Email button + GitHub / LinkedIn icon links                              |
 
-## React Compiler
+A fixed top nav with smooth-scroll anchors and a mobile hamburger menu ties
+everything together.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Make it yours
 
-## Expanding the Oxlint configuration
+Everything personal lives in **`src/data/profile.js`** — name, role, tagline,
+bio, skills, projects, email and social links. Every value there is marked
+with a `← replace` comment. On the page itself, personal placeholders are
+underlined with a dashed line (hover them for a hint); that marker is the
+`.ph` class in `src/index.css` if you want to remove or restyle it.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Other places you may want to touch:
+
+- `index.html` — page `<title>`, meta description and social preview tags.
+- `public/favicon.svg` — replace with your own icon.
+- `src/index.css` — design tokens (`:root` variables) for colors, fonts,
+  spacing and shadows. Change `--accent` to re-theme the whole site.
+- Project cards currently show automatic gradient artwork as the image. To
+  use real screenshots, drop images into `src/assets/`, import them in
+  `src/components/Projects.jsx`, and replace the `project-card__media` div
+  with an `<img>`.
+
+## Commands
+
+```bash
+npm install    # install dependencies
+npm run dev    # start the dev server
+npm run build  # production build into dist/
+npm run preview
+```

@@ -1,8 +1,36 @@
-/* Google Fonts - Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ==========================================================================
+   Global styles & design tokens — one place to re-theme the whole site.
+   The Google Fonts import below is optional; the stack falls back to system
+   fonts gracefully if it can't load.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* CSS Reset and Base Styles */
-*, *::before, *::after {
+/* ── Design tokens ────────────────────────────────────────────────────── */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-soft: #f1f5f9;
+  --text: #0f172a;
+  --muted: #5b6b80;
+  --faint: #94a3b8;
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
+  --accent-soft: #eef2ff;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
+  --shadow-lg: 0 24px 48px -20px rgba(15, 23, 42, 0.25);
+  --radius: 14px;
+  --radius-lg: 22px;
+  --nav-height: 68px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Reset & base ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,68 +38,209 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* smooth-scroll anchors */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.6;
-  color: #e2e8f0;
-  background: #0f172a;
+  font-family: var(--font);
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
-/* Anchor navigation lands below the fixed header */
+/* Anchor navigation always lands below the fixed header */
 section[id] {
-  scroll-margin-top: 72px;
+  scroll-margin-top: calc(var(--nav-height) + 8px);
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+h1,
+h2,
+h3,
+h4 {
   line-height: 1.2;
-  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 p {
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+img,
+svg {
   display: block;
+  max-width: 100%;
 }
 
 button {
-  font-family: inherit;
+  font: inherit;
   cursor: pointer;
+  border: 0;
+  background: none;
 }
 
-ul, ol {
+ul {
   list-style: none;
 }
 
-/* Focus styles for accessibility */
-:focus-visible {
-  outline: 2px solid #6366f1;
-  outline-offset: 2px;
+::selection {
+  background: var(--accent);
+  color: #fff;
 }
 
-/* Scroll-reveal animation (elements marked with data-reveal) */
+/* Inline code (file references inside copy) */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 2px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Layout helpers ───────────────────────────────────────────────────── */
+.container {
+  width: min(1120px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section--soft {
+  background: var(--surface-soft);
+  border-block: 1px solid var(--border);
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #e0e7ff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: 1.02rem;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  line-height: 1;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn svg {
+  flex: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(79, 70, 229, 0.6);
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -8px rgba(79, 70, 229, 0.65);
+}
+
+.btn-outline {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Chips (skills / tags) ────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Visible "placeholder" marker ───────────────────────────────────────
+   Dashed underline marking personal content that should be replaced.
+   Elements carry `title` text explaining what to do. */
+.ph {
+  border-bottom: 2px dashed #a5b4fc;
+  cursor: help;
+}
+
+/* ── Scroll-reveal (subtle fade/slide-up, run once per element) ───────── */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(22px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-  will-change: opacity, transform;
 }
 
 [data-reveal].revealed {
@@ -79,17 +248,21 @@ ul, ol {
   transform: none;
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
   [data-reveal] {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+}
+
+/* ── Responsive tweaks ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .section-head {
+    margin-bottom: 40px;
   }
 }

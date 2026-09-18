@@ -6,13 +6,12 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import useReveal from './hooks/useReveal';
-import './App.css';
 
 function App() {
   useReveal();
 
   return (
-    <div className="app">
+    <>
       <Navbar />
       <main>
         <Hero />
@@ -22,7 +21,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
